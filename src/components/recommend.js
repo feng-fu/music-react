@@ -21,7 +21,7 @@ class SingleRecommend extends React.Component {
   render() {
     return (
       <li className="single">
-        <Link to={`/player/${this.props.item.topic_id}`}>
+        <Link to={`/index/${this.props.item.topic_id}`}>
           {this.props.item.topic_name}
         </Link>
       </li>

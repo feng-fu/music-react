@@ -23,7 +23,7 @@ import Search from '../components/search'
 
 const routes = [
   {
-    path: '/',
+    path: '/index/:id',
     exact: true,
     component: Home
   },
