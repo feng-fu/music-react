@@ -10,6 +10,8 @@ import Recommend from '../components/recommend'
 import Player from '../components/player'
 import Search from '../components/search'
 
+import Menu from '../components/menu'
+
 // // const Basic = () => (
 // //   <Router>
 // //     <div>
@@ -51,6 +53,7 @@ const RouteWithSubRoutes = (route) => (
 const Basic = () => (
   <Router>
     <div>
+      <Menu />
       {routes.map((route, i) => (
         <RouteWithSubRoutes key={i} {...route}/>
       ))}
