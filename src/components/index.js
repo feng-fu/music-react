@@ -1,17 +1,25 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
+import { connect } from 'react-redux'
+import { playOther } from './../store/musicMessage/actions'
 
 import getDataUtils from '../utils/postData'
 
 const Single = (props) => (
-  <li>{props.item.songname}</li>
+  <Link onClick={() => props.playSelect(props.item)} to={`/player/${props.item.url.replace('http://ws.stream.qqmusic.qq.com/', '')}`}>{props.item.songname}</Link>
 )
 
 class Full extends React.Component {
+  playSelect(item) {
+    console.log('triggered')
+    this.props.playSelect(item)
+  }
   render() {
     return (
       <ul>
         {this.props.list.map((item, index) => (
-          <Single item={item} />
+          <Single item={item} playSelect={ this.playSelect.bind(this) } />
         ))}
       </ul>
     )
@@ -20,7 +28,7 @@ class Full extends React.Component {
 
 
 
-export default class Index extends React.Component {
+class Index extends React.Component {
   constructor () {
     super()
     this.state = {
@@ -45,10 +53,20 @@ export default class Index extends React.Component {
   render() {
     return (
       <div className="index">
-        <Full list={this.state.listData} />
+        <Full list={this.state.listData} playSelect={ this.props.playSelect } />
       </div>
     )
   }
 }
 
+const mapStateToProps = (state) => ({})
 
+const mapDispatcherToProps = (dispatch) => {
+  return {
+    playSelect: (text) => {
+      dispatch(playOther(text))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatcherToProps)(Index)

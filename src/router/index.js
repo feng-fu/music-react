@@ -12,20 +12,21 @@ import Search from '../components/search'
 
 import Menu from '../components/menu'
 
-// // const Basic = () => (
-// //   <Router>
-// //     <div>
-// //       <Route exact path='/' component={Home} />
-// //       <Route path='/search' component={Search} />
-// //       <Route path='/recommend' component={Recommend} />
-// //       <Route path='/player/:id' component={Player} />
-// //     </div>
-// //   </Router>
-// // )
+// const Basic = () => (
+//   <Router>
+//     <div>
+//       <Menu />
+//       <Route path="/" exact component={Home} />
+//       <Route path='search' component={Search} />
+//       <Route path='recommend' component={Recommend} />
+//       <Route path='player/:id' component={Player} />
+//     </div>
+//   </Router>
+// )
 
 const routes = [
   {
-    path: '/index/:id',
+    path: '/:id',
     exact: true,
     component: Home
   },
@@ -38,7 +39,7 @@ const routes = [
     component: Recommend
   },
   {
-    path: '/player/:id',
+    path: '/player',
     component: Player
   }
 ]
@@ -60,10 +61,6 @@ const Basic = () => (
     </div>
   </Router>
 )
-
-
-
-
 
 export default Basic
 

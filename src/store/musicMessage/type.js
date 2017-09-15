@@ -1,0 +1,2 @@
+export const CHANGE_CURRENT_PLAY = 'CHANGE_CURRENT_PLAY'
+export const PLAY_PRE = 'PLAY_PRE'
