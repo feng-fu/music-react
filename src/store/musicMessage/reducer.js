@@ -18,16 +18,8 @@ const default_music = {
 
 function currentMusic(state = [default_music], action) {
   switch (action.type) {
-    case type.CHANGE_CURRENT_PLAY:
-      return [
-        state.pop(),
-        action.text
-      ]
-    case type.PLAY_PRE:
-      return [
-        default_music,
-        state.shift()
-      ]
+    case type.CHANGE_LIST_DATA:
+      return action.text
     default:
       return state
   }

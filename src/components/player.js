@@ -3,7 +3,11 @@ import { connect } from 'react-redux'
 
 class Index extends React.Component {
   render() {
-    let musicMsg = this.props.musicMsg.pop()
+    // let musicMsg = this.props.musicMsg.pop()
+    const musicGroup = this.props.musicMsg
+    const id = this.props.match.params.id
+    const musicMsg = musicGroup[id] || musicGroup[0]
+
     return (
       <div className="player_page">
         <div className="summary">

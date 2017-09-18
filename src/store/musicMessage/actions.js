@@ -1,14 +1,8 @@
 import * as type from './type'
 
-export const playOther = (text) => {
+export const changeListData = (text) => {
   return {
-    type: type.CHANGE_CURRENT_PLAY,
+    type: type.CHANGE_LIST_DATA,
     text
-  }
-}
-
-export const playPre = () => {
-  return {
-    type: type.PLAY_PRE
   }
 }

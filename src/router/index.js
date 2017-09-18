@@ -39,7 +39,7 @@ const routes = [
     component: Recommend
   },
   {
-    path: '/player',
+    path: '/player/:id',
     component: Player
   }
 ]
