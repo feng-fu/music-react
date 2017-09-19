@@ -26,8 +26,7 @@ import Menu from '../components/menu'
 
 const routes = [
   {
-    path: '/:id',
-    exact: true,
+    path: '/list/:id',
     component: Home
   },
   {
@@ -35,7 +34,8 @@ const routes = [
     component: Search
   },
   {
-    path: '/recommend',
+    path: '/',
+    exact: true, // 不匹配其他带该路径下内容
     component: Recommend
   },
   {

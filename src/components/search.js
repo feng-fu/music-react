@@ -1,7 +1,11 @@
 import React from 'react'
-import './recommend.css'
+import { changeListData } from './../store/musicMessage/actions'
+import {connect} from 'react-redux'
 
-export default class Search extends React.Component {
+class Search extends React.Component {
+  componentWillMount() {
+
+  }
   render() {
     return (
       <ul className="recommend">
@@ -30,3 +34,12 @@ class SearchResult extends React.Component {
   }
 }
 
+const mapDispatcherToEvent = (dispatch) => {
+  return {
+    refreshMusicList(list) {
+      dispatch(changeListData(list))
+    }
+  }
+}
+
+export default connect(mapDispatcherToEvent)(Search)

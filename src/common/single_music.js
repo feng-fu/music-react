@@ -1,9 +1,18 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-class SingleMusic extends React.Component {
-  render() {
-    return (
-      <div className="single-music"></div>
-    )
-  }
-}
+const Single = (props) => (
+  <Link to={`/player/${props.id}`}>{props.item.songname}</Link>
+)
+
+
+
+export default (props) => (
+  <ul>
+    {this.props.list.map((item, index) => (
+      <li key={index}>
+        <Single item={item} id={index} />
+      </li>
+    ))}
+  </ul>
+)

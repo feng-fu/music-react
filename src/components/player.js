@@ -1,24 +1,31 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-class Index extends React.Component {
+import {Card, CardActions, CardMedia, CardTitle} from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
+
+class CardExampleWithAvatar extends React.Component {
+
   render() {
-    // let musicMsg = this.props.musicMsg.pop()
     const musicGroup = this.props.musicMsg
     const id = this.props.match.params.id
     const musicMsg = musicGroup[id] || musicGroup[0]
-
     return (
-      <div className="player_page">
-        <div className="summary">
-          <div className="title">{musicMsg.songname}</div>
-          <div className="singer">{musicMsg.singername}</div>
-          <img style={{width: '100vw'}} src={musicMsg.albumpic_big} alt=""/>
-        </div>
-         <audio src={musicMsg.url || musicMsg.m4a} controls autoPlay loop></audio> 
-      </div>
+      <Card>
+        <CardMedia
+          overlay={<CardTitle title={musicMsg.songname} subtitle={musicMsg.singername} />}
+        >
+          <img src={musicMsg.albumpic_big} alt="" />
+          <audio src={musicMsg.url || musicMsg.m4a} controls autoPlay loop></audio> 
+        </CardMedia>
+        <CardActions>
+          <FlatButton label="playPre" />
+          <FlatButton label="playNext" />
+        </CardActions>
+      </Card>
     )
   }
+
 }
 
 const mapStateToProps = (state) => {
@@ -27,4 +34,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Index)
+export default connect(mapStateToProps)(CardExampleWithAvatar)

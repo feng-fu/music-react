@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import Basic from './router/'
 
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
-
-class App extends Component {
-  render() {
-    return (
+const App = () => (
+  <MuiThemeProvider>
       <Basic />
-    );
-  }
-}
+  </MuiThemeProvider>
+);
+
 
 export default App;

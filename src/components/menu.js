@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 
 class Menu extends Component {
+  search(e) {
+    
+  }
   render() {
     return (
-      <div>
-        i am menu.
+      <div style={{fontSize: '30px'}}>
+        {/* <input type="text" onKeyPress={this.search.bind(this)} /> */}
       </div>
     )
   }

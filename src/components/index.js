@@ -1,30 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 import { connect } from 'react-redux'
 import { changeListData } from './../store/musicMessage/actions'
 
-import getDataUtils from '../utils/postData'
+import DataDispatcher from '../utils/postData'
 
-const Single = (props) => (
-  <Link to={`/player/${props.id}`}>{props.item.songname}</Link>
-)
+import Full from './../common/single'
 
-class Full extends React.Component {
-  render() {
-    return (
-      <ul>
-        {this.props.list.map((item, index) => (
-          <li key={index}>
-            <Single item={item} id={index} />
-          </li>
-        ))}
-      </ul>
-    )
-  }
-}
-
-
+const postRecommendData = DataDispatcher.postRecommendData
 
 class Index extends React.Component {
   constructor () {
@@ -35,7 +18,7 @@ class Index extends React.Component {
   }
   componentWillMount() {
     const id = this.props.match.params.id
-    getDataUtils.postRecommendData(id).then(
+    postRecommendData(id).then(
       r => {
         r = r.data
         if(r.showapi_res_body && r.showapi_res_body.pagebean && r.showapi_res_body.pagebean.songlist) {
