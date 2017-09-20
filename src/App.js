@@ -2,13 +2,14 @@ import React from 'react';
 import './App.css';
 import Basic from './router/'
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
+
+const theme = createMuiTheme();
 
 const App = () => (
-  <MuiThemeProvider>
+  <MuiThemeProvider theme={theme}>
       <Basic />
   </MuiThemeProvider>
-);
+)
 
-
-export default App;
+export default App

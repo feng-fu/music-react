@@ -36,7 +36,7 @@ class Index extends React.Component {
   render() {
     return (
       <div className="index">
-        <Full list={this.state.listData} />
+        <Full list={this.state.listData} history={this.props.history} />
       </div>
     )
   }

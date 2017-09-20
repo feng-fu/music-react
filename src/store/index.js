@@ -8,9 +8,18 @@ const Reducer = combineReducers({
 
 const store = createStore(Reducer)
 
-store.subscribe(() =>
+store.subscribe((action) =>
   console.log(store.getState())
-);
+)
+
+
+// 重定义dispatch
+let next = store.dispatch
+
+store.dispatch = (action) => {
+  console.log(action)
+  next(action)
+}
 
 
 export default store

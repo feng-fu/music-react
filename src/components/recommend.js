@@ -1,10 +1,12 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import './recommend.css'
-import tilesData from './../config/music_genre'
-import {GridList, GridTile} from 'material-ui/GridList';
 
-const styles = {
+import React from 'react'
+import PropTypes from 'prop-types'
+import { withStyles } from 'material-ui/styles'
+import { GridList, GridListTile, GridListTileBar  } from 'material-ui/GridList'
+import './recommend.css'
+import tileData from './../config/music_genre'
+
+const styles = theme => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -13,26 +15,34 @@ const styles = {
   gridList: {
     width: '100vw'
   },
-};
+})
 
-const GridListExampleSimple = () => (
-  <div style={styles.root}>
-    <GridList
-      cellHeight={120}
-      style={styles.gridList}
-    >
-      {tilesData.map((tile) => (
-        <GridTile
-          title={tile.topic_name}
-          subtitle={<span>by <b>{tile.topic_name}</b></span>}
-          containerElement={<Link to={`/list/${tile.topic_id}`} />}
-        >
-          <img src="https://img10.360buyimg.com/babel/s400x170_jfs/t8149/142/1761260370/13043/8f344e01/59bf50b5Nfa3bf8b2.jpg!q90.webp" alt="" />
-        </GridTile>
-      ))}
-    </GridList>
-  </div>
-);
+function ImageGridList(props) {
+  const classes = props.classes
+  console.log(props)
+  return (
+    <div className={classes.root}>
+      <GridList className={classes.gridList}>
+        {tileData.map((tile, index) => (
+            <GridListTile
+              key={index}
+              onClick={() => {
+                props.history.push(`/list/${tile.topic_id}`)
+              }}
+            >
+              <img src="https://img10.360buyimg.com/babel/s400x170_jfs/t8149/142/1761260370/13043/8f344e01/59bf50b5Nfa3bf8b2.jpg!q90.webp" alt="" />
+              <GridListTileBar
+                title={tile.topic_name}
+              />
+            </GridListTile>
+        ))}
+      </GridList>
+    </div>
+  )
+}
 
+ImageGridList.propTypes = {
+  classes: PropTypes.object.isRequired,
+}
 
-export default GridListExampleSimple;
+export default withStyles(styles)(ImageGridList)
